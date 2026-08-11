@@ -1,0 +1,4266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0a0907">
+    <meta name="description" content="Sebuah perayaan kecil untuk mereka yang berulang tahun bulan ini.">
+
+    <title>Selamat Ulang Tahun — Bulan Ini</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+<style>
+/* =========================================================
+   HBD — BULAN INI
+   MAIN STYLE
+   ========================================================= */
+
+/* =========================================================
+   01. ROOT
+   ========================================================= */
+
+:root {
+    --bg-main: #080807;
+    --bg-secondary: #0d0c0a;
+    --bg-card: rgba(255, 255, 255, 0.035);
+
+    --gold: #d8b56a;
+    --gold-light: #f2d898;
+    --gold-dark: #8e6d32;
+
+    --white: #f4f0e7;
+    --white-soft: #c9c3b8;
+    --text-muted: #8d887e;
+
+    --border: rgba(216, 181, 106, 0.18);
+    --border-soft: rgba(255, 255, 255, 0.08);
+
+    --serif: "Cinzel", Georgia, serif;
+    --sans: "DM Sans", Arial, sans-serif;
+
+    --container: 1240px;
+    --section-padding: 140px;
+}
+
+
+/* =========================================================
+   02. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg-main);
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(216, 181, 106, 0.055),
+            transparent 38%
+        ),
+        var(--bg-main);
+
+    color: var(--white);
+    font-family: var(--sans);
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button {
+    border: 0;
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: var(--gold);
+    color: #080807;
+}
+
+
+/* =========================================================
+   03. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080807;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold-dark);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   04. PRELOADER
+   ========================================================= */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #080807;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.preloader-label {
+    color: var(--gold-light);
+
+    font-family: var(--serif);
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+}
+
+.preloader-line {
+    width: 34px;
+    height: 1px;
+
+    background: var(--gold);
+
+    opacity: 0.5;
+}
+
+
+/* =========================================================
+   05. BACKGROUND SYSTEM
+   ========================================================= */
+
+.background-system {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+#particles {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   ABSTRACT ORNAMENTS
+   ========================================================= */
+
+.ornament {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border: 1px solid rgba(216, 181, 106, 0.09);
+
+    border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%;
+
+    transform: rotate(25deg);
+
+    opacity: 0.65;
+}
+
+.ornament::before,
+.ornament::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border: 1px solid rgba(216, 181, 106, 0.055);
+
+    border-radius: inherit;
+}
+
+.ornament::after {
+    inset: 55px;
+}
+
+.ornament-1 {
+    top: -180px;
+    right: -130px;
+}
+
+.ornament-2 {
+    bottom: -220px;
+    left: -180px;
+
+    transform: rotate(-35deg);
+}
+
+.ornament-3 {
+    top: 38%;
+    left: 47%;
+
+    width: 280px;
+    height: 280px;
+
+    opacity: 0.25;
+
+    transform: rotate(70deg);
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+   ========================================================= */
+
+.background-glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(216, 181, 106, 0.045);
+
+    filter: blur(100px);
+}
+
+.glow-1 {
+    top: -220px;
+    left: 15%;
+}
+
+.glow-2 {
+    right: -250px;
+    bottom: 5%;
+}
+
+
+/* =========================================================
+   GRAIN
+   ========================================================= */
+
+.grain {
+    position: absolute;
+    inset: -50%;
+
+    opacity: 0.035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   06. NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 28px 48px;
+
+    transition:
+        background 0.4s ease,
+        padding 0.4s ease,
+        backdrop-filter 0.4s ease;
+}
+
+.navbar.scrolled {
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    background: rgba(8, 8, 7, 0.75);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(216, 181, 106, 0.08);
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.navbar-logo span {
+    color: var(--gold-light);
+
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+}
+
+.navbar-logo small {
+    color: var(--text-muted);
+
+    font-size: 7px;
+    letter-spacing: 0.35em;
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+   ========================================================= */
+
+.music-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    color: var(--white);
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid var(--border);
+
+    border-radius: 100px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.music-button:hover {
+    background: rgba(216, 181, 106, 0.08);
+    border-color: rgba(216, 181, 106, 0.35);
+
+    transform: translateY(-2px);
+}
+
+.music-icon {
+    color: var(--gold-light);
+    font-size: 15px;
+}
+
+.music-text {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   07. GENERAL SECTION
+   ========================================================= */
+
+.section {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        var(--section-padding)
+        7vw;
+
+    display: flex;
+    align-items: center;
+}
+
+.section-number {
+    position: absolute;
+
+    top: 50%;
+    left: 28px;
+
+    transform: rotate(-90deg) translateX(50%);
+
+    transform-origin: left center;
+}
+
+.section-number span {
+    color: rgba(216, 181, 106, 0.4);
+
+    font-family: var(--serif);
+    font-size: 9px;
+    letter-spacing: 0.35em;
+}
+
+
+/* =========================================================
+   08. EYEBROW
+   ========================================================= */
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: var(--gold-light);
+
+    font-size: 9px;
+    font-weight: 500;
+
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+
+    width: 30px;
+    height: 1px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   09. HERO
+   ========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    justify-content: center;
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 1000px);
+}
+
+.hero-overline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    margin-bottom: 34px;
+
+    color: var(--gold-light);
+
+    font-size: 9px;
+    letter-spacing: 0.45em;
+}
+
+.hero-overline .line {
+    width: 55px;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold)
+    );
+}
+
+.hero-overline .line:last-child {
+    background: linear-gradient(
+        90deg,
+        var(--gold),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 0.9;
+
+    font-family: var(--serif);
+
+    font-weight: 500;
+
+    letter-spacing: -0.035em;
+}
+
+.title-small {
+    color: var(--white);
+
+    font-size: clamp(28px, 5vw, 68px);
+
+    letter-spacing: 0.18em;
+}
+
+.title-large {
+    margin-top: 12px;
+
+    background: linear-gradient(
+        120deg,
+        #a77e38,
+        #f5dda0,
+        #bd9145,
+        #f1d68d
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    font-size: clamp(48px, 10vw, 140px);
+
+    letter-spacing: -0.04em;
+}
+
+.hero-description {
+    max-width: 500px;
+
+    margin: 40px auto 28px;
+
+    color: var(--white-soft);
+
+    font-size: 13px;
+    font-weight: 300;
+
+    line-height: 1.9;
+}
+
+.hero-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    color: var(--gold-light);
+
+    font-family: var(--serif);
+    font-size: 11px;
+
+    letter-spacing: 0.5em;
+}
+
+.date-line {
+    width: 50px;
+    height: 1px;
+
+    background: rgba(216, 181, 106, 0.4);
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+   ========================================================= */
+
+.explore-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-top: 48px;
+    padding: 14px 20px;
+
+    color: var(--white);
+
+    background: transparent;
+
+    border: 1px solid var(--border);
+
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.explore-button:hover {
+    background: rgba(216, 181, 106, 0.08);
+
+    border-color: var(--gold);
+
+    transform: translateY(-3px);
+}
+
+.explore-button .arrow {
+    color: var(--gold-light);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+   ========================================================= */
+
+.scroll-indicator {
+    position: absolute;
+
+    bottom: 35px;
+    left: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    transform: translateX(-50%);
+
+    color: rgba(244, 240, 231, 0.35);
+
+    font-size: 7px;
+    letter-spacing: 0.35em;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 38px;
+
+    background: linear-gradient(
+        to bottom,
+        var(--gold),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   10. INTRO
+   ========================================================= */
+
+.intro {
+    justify-content: flex-start;
+}
+
+.intro-content {
+    width: min(850px, 100%);
+    margin-left: 10%;
+}
+
+.section-title {
+    max-width: 850px;
+
+    margin-top: 25px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(36px, 6vw, 76px);
+    font-weight: 400;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.035em;
+}
+
+.section-title em {
+    display: block;
+
+    color: var(--gold-light);
+
+    font-style: normal;
+}
+
+.intro-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+
+    max-width: 780px;
+
+    margin-top: 55px;
+}
+
+.intro-text p {
+    color: var(--white-soft);
+
+    font-size: 14px;
+    font-weight: 300;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   11. MESSAGE
+   ========================================================= */
+
+.message {
+    justify-content: center;
+}
+
+.message-container {
+    width: min(900px, 100%);
+}
+
+.message-title {
+    margin-top: 25px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(38px, 6vw, 80px);
+    font-weight: 400;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.04em;
+}
+
+.message-body {
+    max-width: 650px;
+
+    margin: 55px 0 0 auto;
+}
+
+.message-body p {
+    margin-bottom: 22px;
+
+    color: var(--white-soft);
+
+    font-size: 14px;
+    font-weight: 300;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   12. WISHES
+   ========================================================= */
+
+.wishes {
+    display: block;
+
+    padding-top: 180px;
+}
+
+.wishes-header {
+    max-width: 850px;
+
+    margin-left: 10%;
+}
+
+.wish-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+
+    max-width: 1100px;
+
+    margin: 80px auto 0;
+}
+
+.wish-card {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 36px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.012)
+        );
+
+    border: 1px solid var(--border-soft);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        background 0.4s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-10px);
+
+    border-color: rgba(216, 181, 106, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(216, 181, 106, 0.08),
+            rgba(255, 255, 255, 0.015)
+        );
+}
+
+.wish-number {
+    color: var(--gold);
+
+    font-family: var(--serif);
+    font-size: 10px;
+
+    letter-spacing: 0.25em;
+}
+
+.wish-card h3 {
+    margin-top: 70px;
+
+    color: var(--white);
+
+    font-family: var(--serif);
+
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.wish-card p {
+    margin-top: 20px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   13. SPECIAL
+   ========================================================= */
+
+.special {
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.special-content {
+    position: relative;
+    z-index: 2;
+}
+
+.special-content .eyebrow {
+    justify-content: center;
+}
+
+.special-title {
+    margin-top: 30px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(50px, 9vw, 120px);
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.05em;
+}
+
+.special-title em {
+    color: var(--gold-light);
+    font-style: normal;
+}
+
+.special-description {
+    max-width: 500px;
+
+    margin: 45px auto 0;
+
+    color: var(--white-soft);
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.special-decoration {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.special-decoration span {
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border: 1px solid rgba(216, 181, 106, 0.06);
+
+    border-radius: 50%;
+
+    transform: rotate(30deg);
+}
+
+.special-decoration span:nth-child(2) {
+    width: 550px;
+    height: 550px;
+
+    transform: rotate(65deg);
+}
+
+.special-decoration span:nth-child(3) {
+    width: 730px;
+    height: 730px;
+
+    transform: rotate(100deg);
+}
+
+
+/* =========================================================
+   14. MAKE A WISH
+   ========================================================= */
+
+.wish {
+    justify-content: center;
+
+    text-align: center;
+}
+
+.wish-content {
+    width: min(650px, 100%);
+}
+
+.wish-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 45px;
+
+    border: 1px solid rgba(216, 181, 106, 0.35);
+
+    border-radius: 50%;
+}
+
+.wish-symbol span {
+    width: 5px;
+    height: 5px;
+
+    background: var(--gold-light);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 20px rgba(242, 216, 152, 0.7);
+}
+
+.wish-content .eyebrow {
+    justify-content: center;
+}
+
+.wish-title {
+    margin-top: 28px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(44px, 7vw, 85px);
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: -0.04em;
+}
+
+.wish-title em {
+    display: block;
+
+    color: var(--gold-light);
+
+    font-style: normal;
+}
+
+.wish-description {
+    max-width: 470px;
+
+    margin: 35px auto 0;
+
+    color: var(--white-soft);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.wish-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+
+    margin-top: 45px;
+    padding: 17px 25px;
+
+    color: #0a0907;
+
+    background: linear-gradient(
+        120deg,
+        #a77e38,
+        #f2d898,
+        #b98d42
+    );
+
+    font-family: var(--serif);
+
+    font-size: 9px;
+
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.wish-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(216, 181, 106, 0.18);
+}
+
+
+/* =========================================================
+   15. FINAL
+   ========================================================= */
+
+.final {
+    min-height: 90vh;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(216, 181, 106, 0.08);
+}
+
+.final-content {
+    width: min(700px, 100%);
+}
+
+.final-content .eyebrow {
+    justify-content: center;
+}
+
+.final-title {
+    margin-top: 25px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(55px, 9vw, 105px);
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.05em;
+}
+
+.final-title em {
+    color: var(--gold-light);
+    font-style: normal;
+}
+
+.final-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    margin: 45px auto 35px;
+}
+
+.final-divider span {
+    width: 80px;
+    height: 1px;
+
+    background: rgba(216, 181, 106, 0.25);
+}
+
+.final-divider b {
+    color: var(--gold-light);
+
+    font-size: 11px;
+
+    font-weight: 400;
+}
+
+.final-message {
+    color: var(--white-soft);
+
+    font-size: 13px;
+    font-weight: 300;
+
+    line-height: 2;
+}
+
+.final-signature {
+    margin-top: 30px;
+
+    color: var(--gold);
+
+    font-family: var(--serif);
+
+    font-size: 10px;
+
+    letter-spacing: 0.15em;
+}
+
+.final-footer {
+    position: absolute;
+
+    right: 7vw;
+    bottom: 35px;
+    left: 7vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: rgba(244, 240, 231, 0.3);
+
+    font-size: 7px;
+
+    letter-spacing: 0.3em;
+}
+
+
+/* =========================================================
+   16. CELEBRATION OVERLAY
+   ========================================================= */
+
+.celebration-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(8, 8, 7, 0.96);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+.celebration-overlay.active {
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.celebration-message {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    color: var(--gold-light);
+
+    font-family: var(--serif);
+
+    font-size: 12px;
+
+    letter-spacing: 0.18em;
+}
+
+.celebration-message span {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   17. UTILITY
+   ========================================================= */
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================================
+   HBD — BULAN INI
+   ANIMATIONS
+   ========================================================= */
+
+
+/* =========================================================
+   01. PRELOADER
+   ========================================================= */
+
+@keyframes preloaderPulse {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scaleX(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.preloader-line {
+    animation: preloaderPulse 1.4s ease-in-out infinite;
+}
+
+.preloader-line:last-child {
+    animation-delay: 0.2s;
+}
+
+
+/* =========================================================
+   02. HERO REVEAL
+   ========================================================= */
+
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.hero .reveal {
+    animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-overline {
+    animation-delay: 0.3s !important;
+}
+
+.hero-title {
+    animation-delay: 0.45s !important;
+}
+
+.hero-description {
+    animation-delay: 0.7s !important;
+}
+
+.hero-date {
+    animation-delay: 0.9s !important;
+}
+
+.explore-button {
+    animation-delay: 1.1s !important;
+}
+
+
+/* =========================================================
+   03. GENERAL SCROLL REVEAL
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(45px);
+
+    filter: blur(5px);
+
+    transition:
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    filter: blur(0);
+}
+
+
+/* =========================================================
+   04. STAGGER
+   ========================================================= */
+
+.wish-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.wish-card:nth-child(2) {
+    transition-delay: 0.18s;
+}
+
+.wish-card:nth-child(3) {
+    transition-delay: 0.31s;
+}
+
+
+/* =========================================================
+   05. ORNAMENT FLOAT
+   ========================================================= */
+
+@keyframes ornamentFloatOne {
+    0% {
+        transform:
+            rotate(25deg)
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            rotate(31deg)
+            translate3d(-25px, 18px, 0);
+    }
+
+    100% {
+        transform:
+            rotate(25deg)
+            translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ornamentFloatTwo {
+    0% {
+        transform:
+            rotate(-35deg)
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            rotate(-29deg)
+            translate3d(30px, -20px, 0);
+    }
+
+    100% {
+        transform:
+            rotate(-35deg)
+            translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ornamentFloatThree {
+    0% {
+        transform:
+            rotate(70deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            rotate(76deg)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            rotate(70deg)
+            scale(1);
+    }
+}
+
+.ornament-1 {
+    animation:
+        ornamentFloatOne
+        16s
+        ease-in-out
+        infinite;
+}
+
+.ornament-2 {
+    animation:
+        ornamentFloatTwo
+        20s
+        ease-in-out
+        infinite;
+}
+
+.ornament-3 {
+    animation:
+        ornamentFloatThree
+        13s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   06. BACKGROUND GLOW
+   ========================================================= */
+
+@keyframes glowPulse {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.15);
+    }
+}
+
+.background-glow {
+    animation:
+        glowPulse
+        8s
+        ease-in-out
+        infinite;
+}
+
+.glow-2 {
+    animation-delay: -3s;
+}
+
+
+/* =========================================================
+   07. HERO GOLD SHIMMER
+   ========================================================= */
+
+@keyframes goldShimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.title-large {
+    background-size: 250% 250%;
+
+    animation:
+        goldShimmer
+        7s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   08. SCROLL INDICATOR
+   ========================================================= */
+
+@keyframes scrollPulse {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+}
+
+.scroll-line {
+    animation:
+        scrollPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   09. MUSIC BUTTON
+   ========================================================= */
+
+@keyframes musicWave {
+    0%,
+    100% {
+        transform: scaleY(0.7);
+    }
+
+    50% {
+        transform: scaleY(1.2);
+    }
+}
+
+.music-button.playing .music-icon {
+    animation:
+        musicWave
+        0.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   10. WISH SYMBOL
+   ========================================================= */
+
+@keyframes symbolGlow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 10px rgba(242, 216, 152, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px rgba(242, 216, 152, 0.55);
+    }
+}
+
+.wish-symbol {
+    animation:
+        symbolGlow
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   11. SPECIAL DECORATION
+   ========================================================= */
+
+@keyframes ringRotate {
+    from {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+    to {
+        transform:
+            rotate(360deg)
+            scale(1);
+    }
+}
+
+.special-decoration span:nth-child(1) {
+    animation:
+        ringRotate
+        35s
+        linear
+        infinite;
+}
+
+.special-decoration span:nth-child(2) {
+    animation:
+        ringRotate
+        50s
+        linear
+        infinite reverse;
+}
+
+.special-decoration span:nth-child(3) {
+    animation:
+        ringRotate
+        70s
+        linear
+        infinite;
+}
+
+
+/* =========================================================
+   12. CARD HOVER
+   ========================================================= */
+
+@keyframes cardGlow {
+    0% {
+        box-shadow:
+            0 0 0 rgba(216, 181, 106, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 20px 60px rgba(216, 181, 106, 0.05);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 rgba(216, 181, 106, 0);
+    }
+}
+
+.wish-card:hover {
+    animation:
+        cardGlow
+        1.5s
+        ease-in-out;
+}
+
+
+/* =========================================================
+   13. BUTTON SHINE
+   ========================================================= */
+
+.wish-button {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.wish-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.35),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.7s ease;
+}
+
+.wish-button:hover::before {
+    left: 140%;
+}
+
+
+/* =========================================================
+   14. FINAL TITLE
+   ========================================================= */
+
+@keyframes finalGlow {
+    0%,
+    100% {
+        text-shadow:
+            0 0 0 rgba(242, 216, 152, 0);
+    }
+
+    50% {
+        text-shadow:
+            0 0 35px rgba(242, 216, 152, 0.08);
+    }
+}
+
+.final-title {
+    animation:
+        finalGlow
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   15. CELEBRATION OVERLAY
+   ========================================================= */
+
+@keyframes celebrationFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.celebration-overlay.active .celebration-message {
+    animation:
+        celebrationFade
+        0.8s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        forwards;
+}
+
+
+/* =========================================================
+   16. CELEBRATION SYMBOL
+   ========================================================= */
+
+@keyframes symbolSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.celebration-message span {
+    animation:
+        symbolSpin
+        5s
+        linear
+        infinite;
+}
+
+
+/* =========================================================
+   17. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+/* =========================================================
+   HBD — BULAN INI
+   RESPONSIVE STYLE
+   ========================================================= */
+
+
+/* =========================================================
+   01. TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    :root {
+        --section-padding: 110px;
+    }
+
+    .navbar {
+        padding: 22px 28px;
+    }
+
+    .navbar.scrolled {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .section {
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+
+    .section-number {
+        display: none;
+    }
+
+    .intro-content,
+    .wishes-header {
+        margin-left: 0;
+    }
+
+    .intro-text {
+        gap: 30px;
+    }
+
+    .wish-grid {
+        grid-template-columns: 1fr;
+        max-width: 650px;
+    }
+
+    .wish-card {
+        min-height: 250px;
+    }
+
+    .wish-card h3 {
+        margin-top: 45px;
+    }
+
+    .special-decoration span:nth-child(1) {
+        width: 300px;
+        height: 300px;
+    }
+
+    .special-decoration span:nth-child(2) {
+        width: 430px;
+        height: 430px;
+    }
+
+    .special-decoration span:nth-child(3) {
+        width: 560px;
+        height: 560px;
+    }
+}
+
+
+/* =========================================================
+   02. MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    :root {
+        --section-padding: 90px;
+    }
+
+
+    /* =========================
+       GLOBAL
+       ========================= */
+
+    body {
+        width: 100%;
+    }
+
+    .section {
+        min-height: 100svh;
+
+        padding:
+            var(--section-padding)
+            22px;
+    }
+
+
+    /* =========================
+       NAVBAR
+       ========================= */
+
+    .navbar {
+        padding: 18px 20px;
+    }
+
+    .navbar-logo span {
+        font-size: 15px;
+    }
+
+    .navbar-logo small {
+        font-size: 6px;
+    }
+
+    .music-button {
+        padding: 8px 12px;
+    }
+
+    .music-text {
+        display: none;
+    }
+
+    .music-icon {
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       PRELOADER
+       ========================= */
+
+    .preloader-label {
+        font-size: 8px;
+        letter-spacing: 0.25em;
+    }
+
+    .preloader-line {
+        width: 20px;
+    }
+
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .hero-overline {
+        gap: 10px;
+
+        margin-bottom: 25px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.3em;
+    }
+
+    .hero-overline .line {
+        width: 25px;
+    }
+
+    .title-small {
+        font-size: clamp(22px, 7vw, 34px);
+
+        letter-spacing: 0.12em;
+    }
+
+    .title-large {
+        margin-top: 9px;
+
+        font-size: clamp(42px, 13vw, 68px);
+
+        line-height: 0.95;
+    }
+
+    .hero-description {
+        max-width: 320px;
+
+        margin-top: 28px;
+
+        font-size: 11px;
+
+        line-height: 1.8;
+    }
+
+    .hero-date {
+        font-size: 8px;
+
+        letter-spacing: 0.35em;
+    }
+
+    .date-line {
+        width: 28px;
+    }
+
+    .explore-button {
+        margin-top: 35px;
+        padding: 12px 15px;
+
+        font-size: 7px;
+    }
+
+    .scroll-indicator {
+        bottom: 22px;
+
+        font-size: 5px;
+
+        letter-spacing: 0.25em;
+    }
+
+    .scroll-line {
+        height: 28px;
+    }
+
+
+    /* =========================
+       EYEBROW
+       ========================= */
+
+    .eyebrow {
+        gap: 9px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.25em;
+    }
+
+    .eyebrow::before {
+        width: 20px;
+    }
+
+
+    /* =========================
+       TITLES
+       ========================= */
+
+    .section-title {
+        margin-top: 18px;
+
+        font-size: clamp(32px, 10vw, 48px);
+
+        line-height: 1.05;
+    }
+
+
+    /* =========================
+       INTRO
+       ========================= */
+
+    .intro {
+        align-items: center;
+    }
+
+    .intro-text {
+        display: block;
+
+        margin-top: 35px;
+    }
+
+    .intro-text p {
+        margin-bottom: 18px;
+
+        font-size: 12px;
+
+        line-height: 1.9;
+    }
+
+
+    /* =========================
+       MESSAGE
+       ========================= */
+
+    .message {
+        align-items: center;
+    }
+
+    .message-title {
+        margin-top: 18px;
+
+        font-size: clamp(33px, 10vw, 48px);
+    }
+
+    .message-body {
+        margin-top: 35px;
+    }
+
+    .message-body p {
+        margin-bottom: 17px;
+
+        font-size: 12px;
+
+        line-height: 1.9;
+    }
+
+
+    /* =========================
+       WISHES
+       ========================= */
+
+    .wishes {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .wish-grid {
+        gap: 12px;
+
+        margin-top: 45px;
+    }
+
+    .wish-card {
+        min-height: 220px;
+
+        padding: 25px;
+    }
+
+    .wish-number {
+        font-size: 8px;
+    }
+
+    .wish-card h3 {
+        margin-top: 38px;
+
+        font-size: 21px;
+    }
+
+    .wish-card p {
+        margin-top: 14px;
+
+        font-size: 11px;
+
+        line-height: 1.8;
+    }
+
+
+    /* =========================
+       SPECIAL
+       ========================= */
+
+    .special-title {
+        font-size: clamp(48px, 14vw, 75px);
+
+        line-height: 0.92;
+    }
+
+    .special-description {
+        max-width: 310px;
+
+        margin-top: 30px;
+
+        font-size: 11px;
+
+        line-height: 1.8;
+    }
+
+    .special-decoration span:nth-child(1) {
+        width: 220px;
+        height: 220px;
+    }
+
+    .special-decoration span:nth-child(2) {
+        width: 320px;
+        height: 320px;
+    }
+
+    .special-decoration span:nth-child(3) {
+        width: 420px;
+        height: 420px;
+    }
+
+
+    /* =========================
+       MAKE A WISH
+       ========================= */
+
+    .wish-symbol {
+        width: 55px;
+        height: 55px;
+
+        margin-bottom: 32px;
+    }
+
+    .wish-title {
+        margin-top: 20px;
+
+        font-size: clamp(42px, 13vw, 65px);
+    }
+
+    .wish-description {
+        max-width: 310px;
+
+        margin-top: 25px;
+
+        font-size: 11px;
+
+        line-height: 1.85;
+    }
+
+    .wish-button {
+        margin-top: 32px;
+
+        padding: 14px 19px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.16em;
+    }
+
+
+    /* =========================
+       FINAL
+       ========================= */
+
+    .final {
+        min-height: 100svh;
+    }
+
+    .final-title {
+        font-size: clamp(48px, 14vw, 75px);
+    }
+
+    .final-divider {
+        margin-top: 32px;
+        margin-bottom: 27px;
+    }
+
+    .final-divider span {
+        width: 45px;
+    }
+
+    .final-message {
+        font-size: 11px;
+
+        line-height: 1.9;
+    }
+
+    .final-signature {
+        margin-top: 25px;
+
+        font-size: 8px;
+    }
+
+    .final-footer {
+        right: 22px;
+        bottom: 22px;
+        left: 22px;
+
+        font-size: 5px;
+
+        letter-spacing: 0.2em;
+    }
+
+
+    /* =========================
+       ORNAMENT
+       ========================= */
+
+    .ornament {
+        width: 270px;
+        height: 270px;
+    }
+
+    .ornament::before {
+        inset: 18px;
+    }
+
+    .ornament::after {
+        inset: 38px;
+    }
+
+    .ornament-1 {
+        top: -120px;
+        right: -130px;
+    }
+
+    .ornament-2 {
+        bottom: -130px;
+        left: -130px;
+    }
+
+    .ornament-3 {
+        width: 180px;
+        height: 180px;
+
+        left: 40%;
+    }
+
+
+    /* =========================
+       BACKGROUND GLOW
+       ========================= */
+
+    .background-glow {
+        width: 300px;
+        height: 300px;
+
+        filter: blur(80px);
+    }
+
+
+    /* =========================
+       CELEBRATION
+       ========================= */
+
+    .celebration-message {
+        gap: 12px;
+
+        padding: 0 25px;
+
+        font-size: 9px;
+
+        text-align: center;
+    }
+}
+
+
+/* =========================================================
+   03. VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .title-large {
+        font-size: 39px;
+    }
+
+    .hero-description {
+        font-size: 10px;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+
+    .message-title {
+        font-size: 30px;
+    }
+
+    .special-title {
+        font-size: 44px;
+    }
+
+    .wish-title {
+        font-size: 39px;
+    }
+
+    .final-title {
+        font-size: 45px;
+    }
+
+    .wish-card {
+        padding: 20px;
+    }
+
+    .wish-card h3 {
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================================
+   04. LANDSCAPE PHONE
+   ========================================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .section {
+        min-height: 700px;
+    }
+
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 80px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .hero-description {
+        margin-top: 20px;
+    }
+
+    .explore-button {
+        margin-top: 25px;
+    }
+}
+
+/* =========================================================
+   PRELOADER FAILSAFE
+   ========================================================= */
+@keyframes preloaderFailsafe {
+    0%, 55% {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+.preloader {
+    animation: preloaderFailsafe 2s ease forwards;
+    animation-delay: 0.2s;
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- ========================================
+         PRELOADER
+    ========================================= -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <span class="preloader-line"></span>
+
+            <p class="preloader-label">
+                Sebentar...
+            </p>
+
+            <span class="preloader-line"></span>
+        </div>
+    </div>
+
+    <!-- Independent preloader failsafe -->
+    <script>
+        (function () {
+            var p = document.getElementById("preloader");
+            if (!p) return;
+            setTimeout(function () {
+                p.classList.add("hidden");
+                p.style.opacity = "0";
+                p.style.visibility = "hidden";
+                p.style.pointerEvents = "none";
+            }, 1500);
+        })();
+    </script>
+
+
+    <!-- ========================================
+         BACKGROUND
+    ========================================= -->
+    <div class="background-system">
+
+        <!-- Ornamen abstrak -->
+        <div class="ornament ornament-1"></div>
+        <div class="ornament ornament-2"></div>
+        <div class="ornament ornament-3"></div>
+
+        <!-- Glow -->
+        <div class="background-glow glow-1"></div>
+        <div class="background-glow glow-2"></div>
+
+        <!-- Partikel -->
+        <canvas id="particles"></canvas>
+
+        <!-- Grain -->
+        <div class="grain"></div>
+
+    </div>
+
+
+    <!-- ========================================
+         NAVIGATION
+    ========================================= -->
+    <header class="navbar">
+
+        <div class="navbar-logo">
+            <span>HBD</span>
+            <small>BULAN INI</small>
+        </div>
+
+        <button
+            class="music-button"
+            id="musicButton"
+            aria-label="Putar atau hentikan musik"
+        >
+            <span class="music-icon">♫</span>
+            <span class="music-text">Musik</span>
+        </button>
+
+    </header>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+    <main>
+
+
+        <!-- ====================================
+             HERO
+        ===================================== -->
+        <section class="hero section" id="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-overline reveal">
+                    <span class="line"></span>
+                    <span>PERAYAAN BULAN INI</span>
+                    <span class="line"></span>
+                </div>
+
+                <h1 class="hero-title reveal">
+                    <span class="title-small">SELAMAT</span>
+                    <span class="title-large">ULANG TAHUN</span>
+                </h1>
+
+                <p class="hero-description reveal">
+                    Untuk kalian yang sedang merayakan
+                    bertambahnya satu tahun kehidupan
+                    di bulan ini.
+                </p>
+
+                <div class="hero-date reveal">
+                    <span class="date-line"></span>
+                    <span>2026</span>
+                    <span class="date-line"></span>
+                </div>
+
+                <button class="explore-button reveal" id="exploreButton">
+                    <span>Mulai Perayaan</span>
+                    <span class="arrow">↓</span>
+                </button>
+
+            </div>
+
+            <div class="scroll-indicator">
+                <span>GULIR UNTUK MELANJUTKAN</span>
+                <div class="scroll-line"></div>
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             INTRO
+        ===================================== -->
+        <section class="intro section" id="intro">
+
+            <div class="section-number">
+                <span>01</span>
+            </div>
+
+            <div class="intro-content">
+
+                <p class="eyebrow reveal">
+                    UNTUK KALIAN
+                </p>
+
+                <h2 class="section-title reveal">
+                    Bulan ini
+                    <em>sedikit lebih istimewa.</em>
+                </h2>
+
+                <div class="intro-text reveal">
+
+                    <p>
+                        Di antara begitu banyak hari yang datang
+                        dan pergi, selalu ada beberapa hari yang
+                        layak diberi perhatian lebih.
+                    </p>
+
+                    <p>
+                        Bukan karena hari itu harus sempurna,
+                        tetapi karena ada seseorang yang sedang
+                        membuka lembaran baru dalam hidupnya.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             BIRTHDAY MESSAGE
+        ===================================== -->
+        <section class="message section" id="message">
+
+            <div class="section-number">
+                <span>02</span>
+            </div>
+
+            <div class="message-container">
+
+                <p class="eyebrow reveal">
+                    SEBUAH UCAPAN
+                </p>
+
+                <h2 class="message-title reveal">
+                    Bertambah usia,
+                    <br>
+                    bertambah cerita.
+                </h2>
+
+                <div class="message-body reveal">
+
+                    <p>
+                        Bertambah satu tahun bukan hanya tentang
+                        angka yang berubah.
+                    </p>
+
+                    <p>
+                        Ada pengalaman yang bertambah,
+                        kesalahan yang menjadi pelajaran,
+                        tawa yang menjadi kenangan,
+                        dan mimpi-mimpi baru yang perlahan
+                        mulai menemukan jalannya.
+                    </p>
+
+                    <p>
+                        Semoga di usia yang baru ini,
+                        kalian menemukan lebih banyak alasan
+                        untuk tersenyum, lebih banyak keberanian
+                        untuk mencoba, dan lebih banyak hal baik
+                        yang datang tanpa diduga.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             WISHES
+        ===================================== -->
+        <section class="wishes section" id="wishes">
+
+            <div class="section-number">
+                <span>03</span>
+            </div>
+
+            <div class="wishes-header">
+
+                <p class="eyebrow reveal">
+                    HARAPAN
+                </p>
+
+                <h2 class="section-title reveal">
+                    Semoga yang baik
+                    <em>menemukan jalannya.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="wish-grid">
+
+                <article class="wish-card reveal">
+                    <span class="wish-number">01</span>
+
+                    <h3>Kebahagiaan</h3>
+
+                    <p>
+                        Semoga selalu ada hal sederhana
+                        yang mampu membuat hari terasa
+                        lebih berarti.
+                    </p>
+                </article>
+
+
+                <article class="wish-card reveal">
+                    <span class="wish-number">02</span>
+
+                    <h3>Keberanian</h3>
+
+                    <p>
+                        Semoga selalu berani melangkah,
+                        mencoba hal baru, dan mengejar
+                        apa yang benar-benar diinginkan.
+                    </p>
+                </article>
+
+
+                <article class="wish-card reveal">
+                    <span class="wish-number">03</span>
+
+                    <h3>Kesuksesan</h3>
+
+                    <p>
+                        Semoga setiap usaha yang dilakukan
+                        perlahan membawa kalian semakin dekat
+                        dengan impian.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             SPECIAL MOMENT
+        ===================================== -->
+        <section class="special section" id="special">
+
+            <div class="special-decoration">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="special-content">
+
+                <p class="eyebrow reveal">
+                    UNTUK HARI INI
+                </p>
+
+                <h2 class="special-title reveal">
+                    Rayakan.
+                    <br>
+                    Nikmati.
+                    <br>
+                    <em>Kenang.</em>
+                </h2>
+
+                <p class="special-description reveal">
+                    Karena setiap tahun yang berhasil dilewati
+                    adalah bagian dari perjalanan yang tidak
+                    akan pernah bisa diulang dengan cara yang sama.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             MAKE A WISH
+        ===================================== -->
+        <section class="wish section" id="makeWish">
+
+            <div class="wish-content">
+
+                <div class="wish-symbol reveal">
+                    <span></span>
+                </div>
+
+                <p class="eyebrow reveal">
+                    SEBELUM PERAYAAN BERAKHIR
+                </p>
+
+                <h2 class="wish-title reveal">
+                    Buatlah
+                    <em>satu harapan.</em>
+                </h2>
+
+                <p class="wish-description reveal">
+                    Pejamkan mata sejenak.
+                    Pikirkan sesuatu yang ingin kamu capai,
+                    sesuatu yang ingin kamu lihat terjadi,
+                    atau sesuatu yang ingin kamu pertahankan.
+                </p>
+
+                <button
+                    class="wish-button reveal"
+                    id="wishButton"
+                >
+                    <span>Buat Harapan</span>
+                    <span>✦</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             FINAL
+        ===================================== -->
+        <section class="final section" id="final">
+
+            <div class="final-content">
+
+                <p class="eyebrow reveal">
+                    DARI KAMI
+                </p>
+
+                <h2 class="final-title reveal">
+                    Selamat
+                    <br>
+                    <em>ulang tahun.</em>
+                </h2>
+
+                <div class="final-divider reveal">
+                    <span></span>
+                    <b>✦</b>
+                    <span></span>
+                </div>
+
+                <p class="final-message reveal">
+                    Semoga tahun yang baru ini membawa
+                    cerita-cerita yang jauh lebih indah,
+                    langkah-langkah yang lebih berarti,
+                    dan kenangan yang suatu hari nanti
+                    akan selalu menyenangkan untuk diingat.
+                </p>
+
+                <p class="final-signature reveal">
+                    — Dari teman-teman sekelas
+                </p>
+
+            </div>
+
+            <div class="final-footer">
+                <span>KEJUTAN</span>
+                <span>2026</span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         MUSIC
+    ========================================= -->
+    <audio
+        id="birthdayMusic"
+        src="birthday.mp3"
+        loop
+        preload="none"
+    ></audio>
+
+
+    <!-- ========================================
+         EFFECT OVERLAY
+    ========================================= -->
+    <div class="celebration-overlay" id="celebrationOverlay">
+
+        <div class="celebration-message">
+            <span>✦</span>
+            <p>Harapanmu telah dibuat.</p>
+            <span>✦</span>
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+
+<script>
+/* =========================================================
+   HBD — BULAN INI
+   PARTICLES SYSTEM
+   ========================================================= */
+
+(() => {
+
+    "use strict";
+
+
+    /* =====================================================
+       CANVAS
+       ===================================================== */
+
+    const canvas =
+        document.getElementById("particles");
+
+    if (!canvas) return;
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    /* =====================================================
+       CONFIG
+       ===================================================== */
+
+    const CONFIG = {
+
+        desktopParticles: 75,
+        mobileParticles: 35,
+
+        maxDistance: 115,
+
+        minSize: 0.4,
+        maxSize: 1.8,
+
+        minSpeed: 0.08,
+        maxSpeed: 0.28,
+
+        opacityMin: 0.15,
+        opacityMax: 0.65
+
+    };
+
+
+    /* =====================================================
+       STATE
+       ===================================================== */
+
+    let width = 0;
+    let height = 0;
+
+    let particles = [];
+
+    let animationFrame;
+
+
+    /* =====================================================
+       DEVICE
+       ===================================================== */
+
+    const isMobile =
+        window.innerWidth <= 600;
+
+
+    const particleCount =
+        isMobile
+            ? CONFIG.mobileParticles
+            : CONFIG.desktopParticles;
+
+
+    /* =====================================================
+       RESIZE
+       ===================================================== */
+
+    function resizeCanvas() {
+
+        const pixelRatio =
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
+
+        width =
+            window.innerWidth;
+
+        height =
+            window.innerHeight;
+
+        canvas.width =
+            width * pixelRatio;
+
+        canvas.height =
+            height * pixelRatio;
+
+        canvas.style.width =
+            `${width}px`;
+
+        canvas.style.height =
+            `${height}px`;
+
+        ctx.setTransform(
+            pixelRatio,
+            0,
+            0,
+            pixelRatio,
+            0,
+            0
+        );
+
+    }
+
+
+    /* =====================================================
+       PARTICLE CLASS
+       ===================================================== */
+
+    class Particle {
+
+        constructor() {
+
+            this.reset(true);
+
+        }
+
+
+        reset(initial = false) {
+
+            this.x =
+                Math.random() * width;
+
+            this.y =
+                initial
+                    ? Math.random() * height
+                    : height + 10;
+
+
+            this.size =
+                CONFIG.minSize +
+                Math.random() *
+                (
+                    CONFIG.maxSize -
+                    CONFIG.minSize
+                );
+
+
+            this.speed =
+                CONFIG.minSpeed +
+                Math.random() *
+                (
+                    CONFIG.maxSpeed -
+                    CONFIG.minSpeed
+                );
+
+
+            this.direction =
+                Math.random() > 0.5
+                    ? 1
+                    : -1;
+
+
+            this.horizontalSpeed =
+                (
+                    Math.random() * 0.12
+                ) *
+                this.direction;
+
+
+            this.opacity =
+                CONFIG.opacityMin +
+                Math.random() *
+                (
+                    CONFIG.opacityMax -
+                    CONFIG.opacityMin
+                );
+
+
+            this.twinkle =
+                Math.random() *
+                Math.PI *
+                2;
+
+
+            this.twinkleSpeed =
+                0.01 +
+                Math.random() * 0.025;
+
+        }
+
+
+        update() {
+
+            this.y -= this.speed;
+
+            this.x +=
+                this.horizontalSpeed;
+
+
+            this.twinkle +=
+                this.twinkleSpeed;
+
+
+            if (this.y < -10) {
+
+                this.reset(false);
+
+            }
+
+
+            if (this.x < -10) {
+
+                this.x =
+                    width + 10;
+
+            }
+
+
+            if (this.x > width + 10) {
+
+                this.x = -10;
+
+            }
+
+        }
+
+
+        draw() {
+
+            const pulse =
+                0.65 +
+                Math.sin(
+                    this.twinkle
+                ) * 0.35;
+
+
+            const alpha =
+                this.opacity *
+                pulse;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                this.x,
+                this.y,
+                this.size,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                `rgba(
+                    216,
+                    181,
+                    106,
+                    ${alpha}
+                )`;
+
+
+            ctx.fill();
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CREATE PARTICLES
+       ===================================================== */
+
+    function createParticles() {
+
+        particles = [];
+
+        for (
+            let i = 0;
+            i < particleCount;
+            i++
+        ) {
+
+            particles.push(
+                new Particle()
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CONNECT PARTICLES
+       ===================================================== */
+
+    function connectParticles() {
+
+        const maxDistance =
+            isMobile
+                ? 80
+                : CONFIG.maxDistance;
+
+
+        for (
+            let i = 0;
+            i < particles.length;
+            i++
+        ) {
+
+            for (
+                let j = i + 1;
+                j < particles.length;
+                j++
+            ) {
+
+                const p1 =
+                    particles[i];
+
+                const p2 =
+                    particles[j];
+
+
+                const dx =
+                    p1.x - p2.x;
+
+                const dy =
+                    p1.y - p2.y;
+
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                if (
+                    distance <
+                    maxDistance
+                ) {
+
+                    const opacity =
+                        (
+                            1 -
+                            distance /
+                            maxDistance
+                        ) * 0.08;
+
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(
+                        p1.x,
+                        p1.y
+                    );
+
+                    ctx.lineTo(
+                        p2.x,
+                        p2.y
+                    );
+
+
+                    ctx.strokeStyle =
+                        `rgba(
+                            216,
+                            181,
+                            106,
+                            ${opacity}
+                        )`;
+
+
+                    ctx.lineWidth =
+                        0.5;
+
+
+                    ctx.stroke();
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       ANIMATION
+       ===================================================== */
+
+    function animate() {
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        particles.forEach(
+            (particle) => {
+
+                particle.update();
+                particle.draw();
+
+            }
+        );
+
+
+        connectParticles();
+
+
+        animationFrame =
+            requestAnimationFrame(
+                animate
+            );
+
+    }
+
+
+    /* =====================================================
+       VISIBILITY OPTIMIZATION
+       ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (document.hidden) {
+
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+            } else {
+
+                animate();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       RESIZE LISTENER
+       ===================================================== */
+
+    let resizeTimeout;
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(
+                resizeTimeout
+            );
+
+
+            resizeTimeout =
+                setTimeout(
+                    () => {
+
+                        resizeCanvas();
+
+                        createParticles();
+
+                    },
+                    150
+                );
+
+        }
+    );
+
+
+    /* =====================================================
+       INIT
+       ===================================================== */
+
+    resizeCanvas();
+
+    createParticles();
+
+    animate();
+
+})();
+
+/* =========================================================
+   HBD — BULAN INI
+   EFFECTS
+   ========================================================= */
+
+(() => {
+
+    "use strict";
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const ornaments =
+        document.querySelectorAll(".ornament");
+
+    const glows =
+        document.querySelectorAll(".background-glow");
+
+    const cards =
+        document.querySelectorAll(".wish-card");
+
+    const hero =
+        document.querySelector(".hero");
+
+
+    /* =====================================================
+       DEVICE CHECK
+       ===================================================== */
+
+    const isTouchDevice =
+        window.matchMedia(
+            "(pointer: coarse)"
+        ).matches;
+
+
+    /* =====================================================
+       MOUSE PARALLAX
+       ===================================================== */
+
+    if (!isTouchDevice) {
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let currentX = 0;
+        let currentY = 0;
+
+
+        window.addEventListener(
+            "mousemove",
+            (event) => {
+
+                mouseX =
+                    (
+                        event.clientX /
+                        window.innerWidth
+                    ) - 0.5;
+
+
+                mouseY =
+                    (
+                        event.clientY /
+                        window.innerHeight
+                    ) - 0.5;
+
+            },
+            { passive: true }
+        );
+
+
+        function parallaxLoop() {
+
+            currentX +=
+                (
+                    mouseX -
+                    currentX
+                ) * 0.035;
+
+
+            currentY +=
+                (
+                    mouseY -
+                    currentY
+                ) * 0.035;
+
+
+            ornaments.forEach(
+                (ornament, index) => {
+
+                    const strength =
+                        10 +
+                        index * 5;
+
+
+                    ornament.style.marginLeft =
+                        `${currentX * strength}px`;
+
+
+                    ornament.style.marginTop =
+                        `${currentY * strength}px`;
+
+                }
+            );
+
+
+            glows.forEach(
+                (glow, index) => {
+
+                    const strength =
+                        18 +
+                        index * 10;
+
+
+                    glow.style.marginLeft =
+                        `${currentX * strength}px`;
+
+
+                    glow.style.marginTop =
+                        `${currentY * strength}px`;
+
+                }
+            );
+
+
+            requestAnimationFrame(
+                parallaxLoop
+            );
+
+        }
+
+
+        parallaxLoop();
+
+    }
+
+
+    /* =====================================================
+       CARD TILT
+       ===================================================== */
+
+    if (!isTouchDevice) {
+
+        cards.forEach(
+            (card) => {
+
+                card.addEventListener(
+                    "mousemove",
+                    (event) => {
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top;
+
+
+                        const centerX =
+                            rect.width / 2;
+
+
+                        const centerY =
+                            rect.height / 2;
+
+
+                        const rotateX =
+                            (
+                                y -
+                                centerY
+                            ) /
+                            22;
+
+
+                        const rotateY =
+                            (
+                                centerX -
+                                x
+                            ) /
+                            22;
+
+
+                        card.style.transform =
+                            `
+                            perspective(800px)
+                            rotateX(${rotateX}deg)
+                            rotateY(${rotateY}deg)
+                            translateY(-8px)
+                            `;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       HERO MOUSE MOVEMENT
+       ===================================================== */
+
+    if (
+        !isTouchDevice &&
+        hero
+    ) {
+
+        const heroContent =
+            hero.querySelector(
+                ".hero-content"
+            );
+
+
+        if (heroContent) {
+
+            window.addEventListener(
+                "mousemove",
+                (event) => {
+
+                    const x =
+                        (
+                            event.clientX /
+                            window.innerWidth
+                        ) - 0.5;
+
+
+                    const y =
+                        (
+                            event.clientY /
+                            window.innerHeight
+                        ) - 0.5;
+
+
+                    heroContent.style.transform =
+                        `
+                        translate3d(
+                            ${x * 6}px,
+                            ${y * 6}px,
+                            0
+                        )
+                        `;
+
+                },
+                { passive: true }
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CLICK RIPPLE
+       ===================================================== */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            const target =
+                event.target.closest(
+                    "button"
+                );
+
+
+            if (!target) return;
+
+
+            const ripple =
+                document.createElement(
+                    "span"
+                );
+
+
+            ripple.className =
+                "click-ripple";
+
+
+            const rect =
+                target.getBoundingClientRect();
+
+
+            const size =
+                Math.max(
+                    rect.width,
+                    rect.height
+                );
+
+
+            ripple.style.width =
+                `${size}px`;
+
+
+            ripple.style.height =
+                `${size}px`;
+
+
+            ripple.style.left =
+                `${
+                    event.clientX -
+                    rect.left -
+                    size / 2
+                }px`;
+
+
+            ripple.style.top =
+                `${
+                    event.clientY -
+                    rect.top -
+                    size / 2
+                }px`;
+
+
+            target.appendChild(
+                ripple
+            );
+
+
+            setTimeout(
+                () => {
+                    ripple.remove();
+                },
+                650
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       SCROLL PARALLAX
+       ===================================================== */
+
+    let ticking = false;
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (ticking) return;
+
+            ticking = true;
+
+
+            requestAnimationFrame(
+                () => {
+
+                    const scrollY =
+                        window.scrollY;
+
+
+                    const heroOrnaments =
+                        document.querySelectorAll(
+                            ".hero .ornament"
+                        );
+
+
+                    heroOrnaments.forEach(
+                        (element, index) => {
+
+                            const speed =
+                                0.04 +
+                                index * 0.02;
+
+
+                            element.style.transform =
+                                `
+                                translateY(
+                                    ${scrollY * speed}px
+                                )
+                                rotate(
+                                    ${25 + index * 20}deg
+                                )
+                                `;
+
+                        }
+                    );
+
+
+                    ticking = false;
+
+                }
+            );
+
+        },
+        { passive: true }
+    );
+
+
+    /* =====================================================
+       ADD RIPPLE STYLE
+       ===================================================== */
+
+    const rippleStyle =
+        document.createElement(
+            "style"
+        );
+
+
+    rippleStyle.textContent = `
+        .click-ripple {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            transform: scale(0);
+            animation: clickRipple 0.65s ease-out forwards;
+        }
+
+        button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes clickRipple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    `;
+
+
+    document.head.appendChild(
+        rippleStyle
+    );
+
+
+    /* =====================================================
+       IMAGE PREVENTION
+       ===================================================== */
+
+    document.addEventListener(
+        "dragstart",
+        (event) => {
+
+            if (
+                event.target.tagName ===
+                "IMG"
+            ) {
+
+                event.preventDefault();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       PAGE LOAD EFFECT
+       ===================================================== */
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            document.body.classList.add(
+                "page-loaded"
+            );
+
+        }
+    );
+
+
+})();
+
+/* =========================================================
+   HBD — BULAN INI
+   MAIN JAVASCRIPT
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const preloader = document.getElementById("preloader");
+    const navbar = document.querySelector(".navbar");
+
+    const musicButton = document.getElementById("musicButton");
+    const music = document.getElementById("birthdayMusic");
+
+    const exploreButton = document.getElementById("exploreButton");
+    const wishButton = document.getElementById("wishButton");
+
+    const celebrationOverlay =
+        document.getElementById("celebrationOverlay");
+
+
+    /* =====================================================
+       PRELOADER
+       ===================================================== */
+
+    const hidePreloader = () => {
+        if (!preloader) return;
+
+        setTimeout(() => {
+            preloader.classList.add("hidden");
+        }, 900);
+    };
+
+    // Mulai berdasarkan DOM, bukan menunggu audio/font selesai loading.
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", hidePreloader, { once: true });
+    } else {
+        hidePreloader();
+    }
+
+    // Pengaman: preloader tidak akan pernah tertahan terlalu lama.
+    setTimeout(() => {
+        if (preloader) preloader.classList.add("hidden");
+    }, 3000);
+
+
+    /* =====================================================
+       NAVBAR SCROLL
+       ===================================================== */
+
+    const handleNavbar = () => {
+
+        if (!navbar) return;
+
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    };
+
+    window.addEventListener(
+        "scroll",
+        handleNavbar,
+        { passive: true }
+    );
+
+    handleNavbar();
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -50px 0px"
+            }
+        );
+
+    revealElements.forEach((element) => {
+        revealObserver.observe(element);
+    });
+
+
+    /* =====================================================
+       SMOOTH SCROLL
+       ===================================================== */
+
+    const scrollToSection = (selector) => {
+
+        const target =
+            document.querySelector(selector);
+
+        if (!target) return;
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    };
+
+
+    /* =====================================================
+       EXPLORE BUTTON
+       ===================================================== */
+
+    if (exploreButton) {
+
+        exploreButton.addEventListener(
+            "click",
+            () => {
+
+                scrollToSection("#intro");
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MUSIC SYSTEM
+       ===================================================== */
+
+    let musicPlaying = false;
+
+    const updateMusicButton = () => {
+
+        if (!musicButton) return;
+
+        if (musicPlaying) {
+
+            musicButton.classList.add("playing");
+
+            musicButton.setAttribute(
+                "aria-label",
+                "Hentikan musik"
+            );
+
+        } else {
+
+            musicButton.classList.remove("playing");
+
+            musicButton.setAttribute(
+                "aria-label",
+                "Putar musik"
+            );
+
+        }
+
+    };
+
+
+    const playMusic = async () => {
+
+        if (!music) return;
+
+        try {
+
+            await music.play();
+
+            musicPlaying = true;
+
+            updateMusicButton();
+
+        } catch (error) {
+
+            console.log(
+                "Musik menunggu interaksi pengguna."
+            );
+
+        }
+
+    };
+
+
+    const pauseMusic = () => {
+
+        if (!music) return;
+
+        music.pause();
+
+        musicPlaying = false;
+
+        updateMusicButton();
+
+    };
+
+
+    if (musicButton) {
+
+        musicButton.addEventListener(
+            "click",
+            async () => {
+
+                if (music.paused) {
+                    await playMusic();
+                } else {
+                    pauseMusic();
+                }
+
+            }
+        );
+
+    }
+
+
+
+
+
+    /* =====================================================
+       MAKE A WISH
+       ===================================================== */
+
+    if (wishButton) {
+
+        wishButton.addEventListener(
+            "click",
+            () => {
+
+                if (!celebrationOverlay) return;
+
+                celebrationOverlay.classList.add(
+                    "active"
+                );
+
+                createWishCelebration();
+
+                setTimeout(() => {
+
+                    celebrationOverlay.classList.remove(
+                        "active"
+                    );
+
+                }, 3500);
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       WISH CELEBRATION
+       ===================================================== */
+
+    function createWishCelebration() {
+
+        const container =
+            document.body;
+
+        const amount = 55;
+
+        for (let i = 0; i < amount; i++) {
+
+            const particle =
+                document.createElement("span");
+
+            particle.className =
+                "wish-particle";
+
+            const size =
+                Math.random() * 5 + 2;
+
+            const x =
+                Math.random() * window.innerWidth;
+
+            const y =
+                window.innerHeight * 0.5 +
+                (Math.random() - 0.5) * 100;
+
+            particle.style.position =
+                "fixed";
+
+            particle.style.left =
+                `${x}px`;
+
+            particle.style.top =
+                `${y}px`;
+
+            particle.style.width =
+                `${size}px`;
+
+            particle.style.height =
+                `${size}px`;
+
+            particle.style.borderRadius =
+                "50%";
+
+            particle.style.background =
+                Math.random() > 0.5
+                    ? "#d8b56a"
+                    : "#f2d898";
+
+            particle.style.pointerEvents =
+                "none";
+
+            particle.style.zIndex =
+                "6000";
+
+            container.appendChild(
+                particle
+            );
+
+            const destinationX =
+                (Math.random() - 0.5) *
+                window.innerWidth *
+                0.9;
+
+            const destinationY =
+                (Math.random() - 0.5) *
+                window.innerHeight *
+                0.8;
+
+            const rotation =
+                Math.random() * 720 - 360;
+
+            const duration =
+                1000 +
+                Math.random() * 1400;
+
+            particle.animate(
+                [
+                    {
+                        transform:
+                            "translate(0, 0) scale(1)",
+                        opacity: 1
+                    },
+                    {
+                        transform:
+                            `translate(
+                                ${destinationX}px,
+                                ${destinationY}px
+                            )
+                            rotate(${rotation}deg)
+                            scale(0)`,
+                        opacity: 0
+                    }
+                ],
+                {
+                    duration,
+                    easing:
+                        "cubic-bezier(.16,1,.3,1)"
+                }
+            ).onfinish = () => {
+
+                particle.remove();
+
+            };
+
+        }
+
+    }
+
+
+    /* =====================================================
+       KEYBOARD ACCESS
+       ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key === "Escape") {
+
+                if (celebrationOverlay) {
+
+                    celebrationOverlay.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       VISIBILITY CHANGE
+       ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (!music) return;
+
+            if (document.hidden) {
+
+                if (!music.paused) {
+                    music.pause();
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INITIAL STATE
+       ===================================================== */
+
+    updateMusicButton();
+
+});
+</script>
+</body>
+</html>
